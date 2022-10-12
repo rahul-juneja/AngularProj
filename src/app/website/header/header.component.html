@@ -1,0 +1,150 @@
+<section class="navBar">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <div class="logo img-fluid">
+                <!-- <img src="images/logo.png" class="" alt="" srcset="" /> -->
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">MyWeb</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Images</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            More
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" target="_blank"
+                                    href="https://www.google.com/">Google</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" target="_blank"
+                                    href="https://www.amazon.com/">Amazon</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-outline-light" data-bs-toggle="modal"
+                        data-bs-target="#SignUp" id="tool_login"
+                        data-bs-title="This top tooltip is themed via CSS variables.">
+                        Login/Register
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</section>
+<section class="modalS">
+    <!-- Modal -->
+    <div class="modal fade" id="SignUp" tabindex="-1" aria-labelledby="SignUpLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="SignUpLabel">Your Detials</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form class="reg-form modelForm" id="registration" action="">
+                    <div class="modal-body">
+                        <div class="Name_details row">
+                            <div class="f_name col-md-6 col-sm-12 p-2">
+                                <div class="d-flex justify-content-between">
+                                    <label for="f_name" class="form-label">First Name</label>
+                                    <label id="fname_val" for="fname_val" class="form-label"></label>
+                                </div>
+                                <input type="text" name="f_name" class="form-control" id="f_name">
+                            </div>
+                            <div class="l_name col-md-6 col-sm-12 p-2">
+                                <div class="d-flex justify-content-between">
+                                    <label for="l_name" class="form-label">Last Name</label>
+                                    <label id="lname_val" for="lname_val" class="form-label "></label>
+                                </div>
+                                <input type="text" name="l_name" class="form-control" id="l_name">
+                            </div>
+                        </div>
+                        <div class="Email_and_Password row">
+                            <div class="email p-2">
+                                <div class="d-flex justify-content-between">
+                                    <label for="email" class="form-label">Email</label>
+                                    <label id="email_val" for="email_val" class="form-label"></label>
+                                </div>
+                                <input type="email" name="email" class="form-control" id="email">
+                            </div>
+                            <div class="pass p-2">
+                                <div class="d-flex justify-content-between">
+                                    <label for="pass" class="form-label">Password</label>
+                                    <label id="pass_val" for="pass_val" class="form-label "></label>
+                                </div>
+                                <input type="password" name="pass" class="form-control" id="pass">
+                            </div>
+                            <div class="repass p-2">
+                                <div class="d-flex justify-content-between">
+                                    <label for="repass" class="form-label">Confirm Password</label>
+                                    <label id="repass_val" for="repass_val" class="form-label "></label>
+                                </div>
+                                <input type="password" name="repass" class="form-control" id="repass" />
+                            </div>
+                            <div class="Other_details row gender btn-group p-2">
+                                <div class="col-md-6 col-sm-12 d-flex justify-content-between">
+                                    <label for="gender" id="gender_col" class="form-label">Gender</label>
+                                    <label id="gender_val" for="gender_val" class="form-label"></label>
+                                </div>
+                                <div class="col-md-4 col-sm-12 col-xs-12 btn-group" role="group" aria-label="Basic radio toggle button group">
+                                    <input type="radio" class="btn-check gender" name="gender" id="male" value="0"
+                                        autocomplete="off"/>
+                                    <label class="btn btn-outline-primary" for="male">Male</label>
+
+                                    <input type="radio" class="btn-check gender" name="gender" id="female" value="1"
+                                        autocomplete="off" />
+                                    <label class="btn btn-outline-primary" for="female">Female</label>
+
+                                    <input type="radio" class="btn-check gender" name="gender" id="others" value="2"
+                                        autocomplete="off" />
+                                    <label class="btn btn-outline-primary" for="others">Others</label>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+        <div class="modal-footer">
+            <button class="btn btn-outline-danger w-100" id="submitSign">SignUp</button>
+        </div>
+        </form>
+    </div>
+    </div>
+    </div>
+    <div class="modal fade" id="thankYou" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+        tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalToggleLabel2">Thanks For Signing Up</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    We are pleased to inform you that you are <span class="text-success">Successfully</span>
+                    Registered to Us.
+                </div>
+                <div class="modal-footer">
+                    <button id="reload_page" class="btn btn-primary" data-bs-toggle="modal">Welcome</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

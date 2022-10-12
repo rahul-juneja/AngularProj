@@ -1,5 +1,5 @@
 {
-  "name": "angular-proj",
+  "name": "angularproj",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -18,7 +18,10 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "bootstrap": "^5.2.2",
+    "jquery": "^3.6.1",
     "rxjs": "~7.5.0",
+    "timer-countdown": "^0.2.6",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
@@ -34,5 +37,17 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "typescript": "~4.7.2"
-  }
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.3.",
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rahul-juneja/AngularProj.git"
+  },
+  "author": "Rahul",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rahul-juneja/AngularProj/issues"
+  },
+  "homepage": "https://github.com/rahul-juneja/AngularProj#readme"
 }

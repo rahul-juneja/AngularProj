@@ -97,11 +97,19 @@
             ],
             "styles": [
               "src/styles.scss"
+              // "node_modules/bootstrap/dist/css/bootstrap.css"
             ],
-            "scripts": []
+            "scripts": [
+            //   "node_modules/bootstrap/dist/js/bootstrap.js",
+            //   "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
+            //   "node_modules/jquery/dist/jquery.js"
+            ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "98b4d1e8-eb9c-4bb0-9cb3-6f86e1e04654"
   }
 }
