@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-main',
@@ -7,8 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  user:Object = {
+    firstName: 'John',
+    password:  'test'
+};
 
+  
   ngOnInit(): void {
   }
 

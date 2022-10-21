@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashBoardComponent } from './dash-board/dash-board.component';
-import { WebsiteRoutingModule } from './website/website-routing.module';
+import { UserModule } from './user/user.module';
 import { WebsiteModule } from './website/website.module';
 
 @NgModule({
@@ -16,7 +17,8 @@ import { WebsiteModule } from './website/website.module';
     BrowserModule,
     AppRoutingModule,
     WebsiteModule,
-    WebsiteRoutingModule
+    UserModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,180 @@
+<!-- Section: Design Block -->
+<section class="overflow-hidden w-100 vh-100">
+  <style>
+    #radius-shape-1 {
+      height: 220px;
+      width: 220px;
+      top: -60px;
+      left: -130px;
+      background: radial-gradient(#44006b, #ad1fff);
+      overflow: hidden;
+    }
+
+    #radius-shape-2 {
+      border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+      bottom: -60px;
+      right: -110px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(#44006b, #ad1fff);
+      overflow: hidden;
+    }
+
+    .bg-glass {
+      background-color: hsla(0, 0%, 100%, 0.9) !important;
+      backdrop-filter: saturate(200%) blur(25px);
+    }
+
+  </style>
+
+  <div class="container text-center text-lg-start my-5">
+    <div class="row gx-lg-5 align-items-center mb-5">
+      <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+        <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+          The best offer <br />
+          <span style="color: hsl(218, 81%, 75%)">for your business</span>
+        </h1>
+        <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+          Temporibus, expedita iusto veniam atque, magni tempora mollitia
+          dolorum consequatur nulla, neque debitis eos reprehenderit quasi
+          ab ipsum nisi dolorem modi. Quos?
+        </p>
+      </div>
+
+      <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+        <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+        <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+        <div class="card bg-glass">
+          <div class="card-body py-4 px-md-5">
+            <form [formGroup]="regForm" (ngSubmit)="regSubmit()">
+
+
+
+              <!-- FORM INPUT  -->
+              <div class="row f_l_name">
+
+                <div class="col-md-6 col-sm-12 form-outline mb-4">
+                  <input type="text" id="f_name" placeholder="First Name" class="form-control"
+                    formControlName="f_name" />
+                  <span for="" *ngIf="f['f_name'].touched">
+                    <label class="text-danger" for="" *ngIf="f['f_name'].errors?.['required']">
+                      *Required
+                    </label>
+                    <label for="" class="text-danger" *ngIf="f['f_name'].errors?.['pattern']">
+                      Pattern is not followed
+                    </label>
+                  </span>
+                </div>
+                <div class="col-md-6 col-sm-12 form-outline mb-4">
+                  <input type="text" id="l_name" placeholder="Last Name" class="form-control"
+                    formControlName="l_name" />
+                  <span for="" *ngIf="f['l_name'].touched">
+                    <label class="text-danger" for="" *ngIf="f['l_name'].errors?.['required']">
+                      *Required
+                    </label>
+                    <label for="" class="text-danger" *ngIf="f['l_name'].errors?.['pattern']">
+                      Pattern is not followed
+                    </label>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-outline mb-4">
+                <input type="text" id="username" placeholder="UserName" class="form-control"
+                  formControlName="username" />
+                <span for="" *ngIf="f['username'].touched">
+                  <label class="text-danger" for="" *ngIf="f['username'].errors?.['required']">
+                    *Required
+                  </label>
+                  <label for="" class="text-danger" *ngIf="f['username'].errors?.['pattern']">
+                    Pattern is not followed
+                  </label>
+                </span>
+              </div>
+
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <input type="email" id="email" placeholder="Email" class="form-control" formControlName="email" />
+                <span for="" *ngIf="f['email'].touched">
+                  <label class="text-danger" for="" *ngIf="f['email'].errors?.['required']">
+                    *Required
+                  </label>
+                  <label for="" class="text-danger" *ngIf="f['email'].errors?.['pattern']">
+                    Pattern is not followed
+                  </label>
+                </span>
+              </div>
+
+              <!-- Password input -->
+              <div class="row passwd_fields">
+                <div class="col-md-6 col-sm-12 form-outline mb-4">
+                  <input type="password" id="pass" class="form-control" formControlName="pass" placeholder="Password" />
+                  <span for="" *ngIf="f['pass'].touched">
+                    <label class="text-danger" for="" *ngIf="f['pass'].errors?.['required']">
+                      *Required
+                    </label>
+                    <label for="" class="text-danger" *ngIf="f['pass'].errors?.['pattern']">
+                      Pattern is not followed
+                    </label>
+                  </span>
+                </div>
+                <div class="col-md-6 col-sm-12 form-outline mb-4">
+                  <input type="password" id="repass" class="form-control" formControlName="repass"
+                    placeholder="Confirm Password" />
+                  <span for="" *ngIf="f['repass'].touched">
+                    <label class="text-danger" for="" *ngIf="f['repass'].errors?.['required']">
+                      *Required
+                    </label>
+                    <label for="" class="text-danger" *ngIf="f['repass'].errors?.['pattern']">
+                      Confirm is not equal to Password
+                    </label>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Other Fields -->
+              <div class="form-outline">
+                <input type="phone" id="phone" class="form-control" formControlName="phone"
+                  placeholder="Phone Number" />
+                <span for="" *ngIf="f['phone'].touched">
+                  <label class="text-danger" for="" *ngIf="f['phone'].errors?.['required']">
+                    *Required
+                  </label>
+                  <label for="" class="text-danger" *ngIf="f['phone'].errors?.['pattern']">
+                    It must be 10 digit number
+                  </label>
+                </span>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12 btn-group pb-3 pt-4" role="group"
+                aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check gender" name="gender" id="male" value="male" autocomplete="off" />
+                <label class="btn btn-outline-primary" for="male">Male</label>
+
+                <input type="radio" class="btn-check gender" name="gender" id="female" value="female"
+                  autocomplete="off" />
+                <label class="btn btn-outline-primary" for="female">Female</label>
+
+              </div>
+              <div class="state p-2">
+                <select name="state" id="state" class="form-select">
+                  <option value="">Select Your Role</option>
+                  <option value="admin_user">Admin</option>
+                  <option value="user">Normal User</option>
+                </select>
+              </div>
+
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-block w-100 mb-4">
+                Sign up
+              </button>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Design Block -->
