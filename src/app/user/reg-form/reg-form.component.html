@@ -1,6 +1,9 @@
 <!-- Section: Design Block -->
-<section class="overflow-hidden w-100 vh-100">
+<section class="main w-100 vh-100">
   <style>
+    .main{
+      overflow-x: hidden;
+    }
     #radius-shape-1 {
       height: 220px;
       width: 220px;
@@ -58,24 +61,24 @@
                 <div class="col-md-6 col-sm-12 form-outline mb-4">
                   <input type="text" id="f_name" placeholder="First Name" class="form-control"
                     formControlName="f_name" />
-                  <span for="" *ngIf="f['f_name'].touched">
+                  <span for="" *ngIf="f['f_name'].touched || submitted">
                     <label class="text-danger" for="" *ngIf="f['f_name'].errors?.['required']">
                       *Required
                     </label>
                     <label for="" class="text-danger" *ngIf="f['f_name'].errors?.['pattern']">
-                      Pattern is not followed
+                      Only Alphabets!
                     </label>
                   </span>
                 </div>
                 <div class="col-md-6 col-sm-12 form-outline mb-4">
                   <input type="text" id="l_name" placeholder="Last Name" class="form-control"
                     formControlName="l_name" />
-                  <span for="" *ngIf="f['l_name'].touched">
+                  <span for="" *ngIf="f['l_name'].touched || submitted">
                     <label class="text-danger" for="" *ngIf="f['l_name'].errors?.['required']">
                       *Required
                     </label>
                     <label for="" class="text-danger" *ngIf="f['l_name'].errors?.['pattern']">
-                      Pattern is not followed
+                      Only Alphabets!
                     </label>
                   </span>
                 </div>
@@ -84,12 +87,12 @@
               <div class="form-outline mb-4">
                 <input type="text" id="username" placeholder="UserName" class="form-control"
                   formControlName="username" />
-                <span for="" *ngIf="f['username'].touched">
+                <span for="" *ngIf="f['username'].touched || submitted">
                   <label class="text-danger" for="" *ngIf="f['username'].errors?.['required']">
                     *Required
                   </label>
                   <label for="" class="text-danger" *ngIf="f['username'].errors?.['pattern']">
-                    Pattern is not followed
+                    No UpperCase Letters or any special characters 
                   </label>
                 </span>
               </div>
@@ -97,12 +100,12 @@
               <!-- Email input -->
               <div class="form-outline mb-4">
                 <input type="email" id="email" placeholder="Email" class="form-control" formControlName="email" />
-                <span for="" *ngIf="f['email'].touched">
+                <span for="" *ngIf="f['email'].touched || submitted">
                   <label class="text-danger" for="" *ngIf="f['email'].errors?.['required']">
                     *Required
                   </label>
                   <label for="" class="text-danger" *ngIf="f['email'].errors?.['pattern']">
-                    Pattern is not followed
+                    It should contain @ gmail or any other webamil and .com
                   </label>
                 </span>
               </div>
@@ -111,7 +114,7 @@
               <div class="row passwd_fields">
                 <div class="col-md-6 col-sm-12 form-outline mb-4">
                   <input type="password" id="pass" class="form-control" formControlName="pass" placeholder="Password" />
-                  <span for="" *ngIf="f['pass'].touched">
+                  <span for="" *ngIf="f['pass'].touched || submitted">
                     <label class="text-danger" for="" *ngIf="f['pass'].errors?.['required']">
                       *Required
                     </label>
@@ -121,15 +124,15 @@
                   </span>
                 </div>
                 <div class="col-md-6 col-sm-12 form-outline mb-4">
-                  <input type="password" id="repass" class="form-control" formControlName="repass"
+                  <input type="password" id="repass" class="form-control" (input)="confirmPass()" formControlName="repass"
                     placeholder="Confirm Password" />
-                  <span for="" *ngIf="f['repass'].touched">
+                  <span for="" *ngIf="f['repass'].touched || submitted">
                     <label class="text-danger" for="" *ngIf="f['repass'].errors?.['required']">
                       *Required
                     </label>
-                    <label for="" class="text-danger" *ngIf="f['repass'].errors?.['pattern']">
-                      Confirm is not equal to Password
-                    </label>
+                      <label for="" class="text-danger" *ngIf="!f['repass'].errors?.['required'] && !confirm">
+                        Confirm is not equal to Password
+                      </label>
                   </span>
                 </div>
               </div>
@@ -138,7 +141,7 @@
               <div class="form-outline">
                 <input type="phone" id="phone" class="form-control" formControlName="phone"
                   placeholder="Phone Number" />
-                <span for="" *ngIf="f['phone'].touched">
+                <span for="" *ngIf="f['phone'].touched || submitted">
                   <label class="text-danger" for="" *ngIf="f['phone'].errors?.['required']">
                     *Required
                   </label>
@@ -149,21 +152,31 @@
               </div>
               <div class="col-md-12 col-sm-12 col-xs-12 btn-group pb-3 pt-4" role="group"
                 aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check gender" name="gender" id="male" value="male" autocomplete="off" />
+                <input type="radio" class="btn-check gender" formControlName="gender" name="gender" id="male" value="male" autocomplete="off" />
                 <label class="btn btn-outline-primary" for="male">Male</label>
 
-                <input type="radio" class="btn-check gender" name="gender" id="female" value="female"
+                <input type="radio" class="btn-check gender" formControlName="gender" name="gender" id="female" value="female"
                   autocomplete="off" />
                 <label class="btn btn-outline-primary" for="female">Female</label>
 
               </div>
-              <div class="state p-2">
-                <select name="state" id="state" class="form-select">
+              <span for="" *ngIf="f['gender'].touched || submitted">
+                <label class="text-danger" for="" *ngIf="f['gender'].errors?.['required']">
+                  *Required
+                </label>
+              </span>
+              <div class="role p-2">
+                <select name="role" id="role" class="form-select" formControlName="role">
                   <option value="">Select Your Role</option>
                   <option value="admin_user">Admin</option>
                   <option value="user">Normal User</option>
                 </select>
               </div>
+              <span for="" *ngIf="f['role'].touched || submitted">
+                <label class="text-danger" for="" *ngIf="f['role'].errors?.['required']">
+                  *Required
+                </label>
+              </span>
 
               <!-- Submit button -->
               <button type="submit" class="btn btn-primary btn-block w-100 mb-4">
@@ -171,6 +184,9 @@
               </button>
 
             </form>
+            <a href="/user/login">
+                Redirect to the Login Page?
+            </a>
           </div>
         </div>
       </div>

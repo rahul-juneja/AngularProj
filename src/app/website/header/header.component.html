@@ -50,7 +50,7 @@
 </section>
 <section class="modalS">
   <!-- Modal -->
-  <div class="modal fade" id="SignUp" tabindex="-1" aria-labelledby="SignUpLabel" aria-hidden="true">
+  <!-- <div class="modal fade" id="SignUp" tabindex="-1" aria-labelledby="SignUpLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -73,6 +73,10 @@
               <div class="l_name col-md-6 col-sm-12 p-2">
                 <div class="d-flex justify-content-between">
                   <label for="l_name" class="form-label">Last Name</label>
+                  <label id="fname_val" for="fname_val" class="col-4  form-label text-danger"
+                    *ngIf="f['l_name'].touched && f['l_name'].errors?.['required'] ">*Required</label>
+                  <label id="fname_val" for="fname_val" class="col-4  form-label text-danger"
+                    *ngIf="f['l_name'].touched && f['l_name'].errors?.['minlength'] ">More than 3 letters</label>
                   <label id="lname_val" for="lname_val" class="form-label "></label>
                 </div>
                 <input type="text" name="l_name" class="form-control" id="l_name" formControlName="l_name">
@@ -125,8 +129,36 @@
         </form>
       </div>
     </div>
+  </div> -->
+  <div class="modal fade" id="SignUp" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleLabel2">WelCome to Our Academy</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body row d-flex justify-content-between">
+         <div class="login col-6">
+          <a href="/user/login">
+            <button class="btn btn-primary">Already registered?</button>
+          </a>
+         </div>
+         <div class="space col-2">
+          
+        </div>
+         <div class="register col-4">
+         <a href="register">
+           <button class="btn btn-warning">New Here?</button>
+         </a>
+         </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="modal fade" id="thankYou" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+  <div class="modal fade" id="thankYou" aria-hidden="true" aria-labelledby="exampleModalToggleLabel3" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
