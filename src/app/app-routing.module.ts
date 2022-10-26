@@ -3,9 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginFormComponent } from './user/login-form/login-form.component';
 import { RegFormComponent } from './user/reg-form/reg-form.component';
 import { ResetFormComponent } from './user/reset-form/reset-form.component';
-import { FooterComponent } from './website/footer/footer.component';
-import { HeaderComponent } from './website/header/header.component';
-import { MainComponent } from './website/main/main.component';
+import { HomeComponent } from './website/home/home.component';
 
 const routes: Routes = [
   {
@@ -16,6 +14,9 @@ const routes: Routes = [
   },
   {
     path: "user/forget", component: ResetFormComponent
+  },
+  {
+    path: "home", component: HomeComponent
   }
 ];
 
