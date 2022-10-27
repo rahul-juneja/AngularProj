@@ -39,9 +39,13 @@
         </ul>
         <form class="d-flex">
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#SignUp"
+          <button type="button" class="btn btn-outline-light" [hidden]="username" data-bs-toggle="modal" data-bs-target="#SignUp"
             id="tool_login" data-bs-title="This top tooltip is themed via CSS variables.">
             Login/Register
+          </button>
+          <button type="button" [hidden]="!username" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#SignUp"
+            id="tool_login" data-bs-title="This top tooltip is themed via CSS variables.">
+            {{username}}
           </button>
         </form>
       </div>

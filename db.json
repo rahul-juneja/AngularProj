@@ -1,0 +1,86 @@
+{
+  "posts": [
+    {
+      "id": "5",
+      "name": "student8",
+      "rollno": 1,
+      "fathername": "father1",
+      "section": "a"
+    },
+    {
+      "id": "4",
+      "name": "student2",
+      "rollno": 2,
+      "fathername": "father2",
+      "section": "b"
+    }
+  ],
+  "signup": [
+    {
+      "name": "",
+      "mobile": "",
+      "email": "",
+      "password": "",
+      "id": 1
+    },
+    {
+      "firstname": "sakdhj",
+      "lastname": "jkhaskjdhs",
+      "username": "asjkhdjas",
+      "email": "asjkhd@gmail.com",
+      "password": "Welcome@123",
+      "phone": "5646845486",
+      "gender": "male",
+      "role": "admin_user",
+      "id": 2
+    },
+    {
+      "firstname": "asdsad",
+      "lastname": "sdadasd",
+      "username": "kansdnas",
+      "email": "sklands@gmail.com",
+      "password": "Welcome@123",
+      "phone": "1234567890",
+      "gender": "male",
+      "role": "admin_user",
+      "id": 3
+    },
+    {
+      "firstname": "asdasd",
+      "lastname": "asdasd",
+      "username": "asdasd",
+      "email": "123@gmail.com",
+      "password": "Welcome@123",
+      "phone": "1234567890",
+      "gender": "male",
+      "role": "admin_user",
+      "id": 4
+    },
+    {
+      "firstname": "Jyoti",
+      "lastname": "Pro",
+      "username": "jp",
+      "email": "jp@orion.in",
+      "password": "Welcome@123",
+      "phone": "1234566541",
+      "gender": "male",
+      "role": "user",
+      "id": 5
+    },
+    {
+      "firstname": "Rahul",
+      "lastname": "Juneja",
+      "username": "rahul",
+      "email": "rahul@orion.in",
+      "password": "Welcome@123",
+      "phone": "1234567890",
+      "gender": "male",
+      "role": "admin_user",
+      "id": 6
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

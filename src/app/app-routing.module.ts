@@ -7,17 +7,22 @@ import { HomeComponent } from './website/home/home.component';
 
 const routes: Routes = [
   {
-    path: "user/register", component: RegFormComponent
+    path: '', component: HomeComponent
   },
+  // {
+  //   path:'user', 
+  //   loadChildren: () => import('./user/user.module')
+  //   .then(mod => mod.UserModule)
+  // },
   {
     path: "user/login", component: LoginFormComponent
   },
   {
-    path: "user/forget", component: ResetFormComponent
+    path: "user/register", component: RegFormComponent
   },
   {
-    path: "home", component: HomeComponent
-  }
+    path: "user/forget", component: ResetFormComponent
+  },
 ];
 
 @NgModule({

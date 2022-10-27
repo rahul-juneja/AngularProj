@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-reg-form',
@@ -12,8 +13,10 @@ export class RegFormComponent implements OnInit {
   regForm !: FormGroup;
   confirm: boolean = false;
   submitted = false;
+  data:any;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private router: Router,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     this.regForm = this.formBuilder.group({
@@ -48,7 +51,25 @@ export class RegFormComponent implements OnInit {
     this.submitted = true
     console.log(this.regForm.value)
     if(this.regForm.valid){
-      this.router.navigateByUrl("/home")
+      this.data = {
+        firstname: this.f['f_name'].value,
+        lastname: this.f['l_name'].value,
+        username: this.f['username'].value,
+        email: this.f['email'].value,
+        password: this.f['pass'].value,
+        phone: this.f['phone'].value,
+        gender: this.f['gender'].value,
+        role: this.f['role'].value
+      }
+      this.authService.regService(this.data).subscribe(res=>{
+        alert('Updated Successfully!!!')
+        localStorage.setItem('email',this.data.email)
+        localStorage.setItem('pass',this.data.password)
+        this.regForm.reset()
+        this.router.navigateByUrl('')
+
+      })
+      
     }
 
   }
