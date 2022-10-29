@@ -39,14 +39,28 @@
         </ul>
         <form class="d-flex">
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-outline-light" [hidden]="username" data-bs-toggle="modal" data-bs-target="#SignUp"
-            id="tool_login" data-bs-title="This top tooltip is themed via CSS variables.">
+          <button type="button" class="btn btn-outline-light" [hidden]="username" data-bs-toggle="modal"
+            data-bs-target="#SignUp" id="tool_login" data-bs-title="This top tooltip is themed via CSS variables.">
             Login/Register
           </button>
-          <button type="button" [hidden]="!username" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#SignUp"
-            id="tool_login" data-bs-title="This top tooltip is themed via CSS variables.">
-            {{username}}
-          </button>
+          <div class="dropdown">
+
+            <button type="button" [hidden]="!username" class="btn btn-outline-light" id="tool_login"
+              data-bs-title="This top tooltip is themed via CSS variables.">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                {{username}}
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <a class="dropdown-item" href="">Profile</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" (click)="logout()">LogOut</a>
+                  </li>
+                </ul>
+              </a>
+            </button>
+          </div>
         </form>
       </div>
     </div>
@@ -142,19 +156,19 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body row d-flex justify-content-between">
-         <div class="login col-6">
-          <a href="/user/login">
-            <button class="btn btn-primary">Already registered?</button>
-          </a>
-         </div>
-         <div class="space col-2">
-          
-        </div>
-         <div class="register col-4">
-         <a href="register">
-           <button class="btn btn-warning">New Here?</button>
-         </a>
-         </div>
+          <div class="login col-6">
+            <a href="/user/login">
+              <button class="btn btn-primary">Already registered?</button>
+            </a>
+          </div>
+          <div class="space col-2">
+
+          </div>
+          <div class="register col-4">
+            <a href="register">
+              <button class="btn btn-warning">New Here?</button>
+            </a>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>

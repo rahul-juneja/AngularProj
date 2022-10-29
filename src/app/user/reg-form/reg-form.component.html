@@ -159,24 +159,24 @@
                   autocomplete="off" />
                 <label class="btn btn-outline-primary" for="female">Female</label>
 
+                <span for="" *ngIf="f['gender'].touched || submitted">
+                  <label class="text-danger" for="" *ngIf="f['gender'].errors?.['required']">
+                    *Required
+                  </label>
+                </span>
               </div>
-              <span for="" *ngIf="f['gender'].touched || submitted">
-                <label class="text-danger" for="" *ngIf="f['gender'].errors?.['required']">
-                  *Required
-                </label>
-              </span>
               <div class="role p-2">
                 <select name="role" id="role" class="form-select" formControlName="role">
                   <option value="">Select Your Role</option>
                   <option value="admin_user">Admin</option>
                   <option value="user">Normal User</option>
                 </select>
-              </div>
-              <span for="" *ngIf="f['role'].touched || submitted">
+                <span for="" *ngIf="f['role'].touched || submitted">
                 <label class="text-danger" for="" *ngIf="f['role'].errors?.['required']">
                   *Required
                 </label>
               </span>
+            </div>
 
               <!-- Submit button -->
               <button type="submit" class="btn btn-primary btn-block w-100 mb-4">

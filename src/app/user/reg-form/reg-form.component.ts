@@ -62,7 +62,7 @@ export class RegFormComponent implements OnInit {
         role: this.f['role'].value
       }
       this.authService.regService(this.data).subscribe(res=>{
-        alert('Updated Successfully!!!')
+        alert('SignIn Successfully!!!')
         localStorage.setItem('email',this.data.email)
         localStorage.setItem('pass',this.data.password)
         this.regForm.reset()

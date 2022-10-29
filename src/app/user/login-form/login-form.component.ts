@@ -16,6 +16,7 @@ export class LoginFormComponent implements OnInit {
   firstname: any
   user_1: any;
   isLogged: boolean = false
+  submitted:boolean = false
 
   constructor(private formBuilder: FormBuilder, private router: Router,
     private authService: AuthService
@@ -52,6 +53,8 @@ export class LoginFormComponent implements OnInit {
           alert("InCorrect Email or Password!")
         }
       });
+    }else{
+      this.submitted = true
     }
   }
   // showConfig() {

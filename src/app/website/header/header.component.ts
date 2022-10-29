@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,7 @@ export class HeaderComponent implements OnInit {
   username:any;
 
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -32,7 +33,10 @@ export class HeaderComponent implements OnInit {
     return this.regForm.controls
 
   }
-
+  logout(){
+    localStorage.clear()
+    this.router.navigateByUrl('login')
+  }
 
   onSubmit(){
     console.log(this.regForm);

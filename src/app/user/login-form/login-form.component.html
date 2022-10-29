@@ -54,7 +54,7 @@
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                   <input type="email" id="form3Example3" placeholder="Email" class="form-control"  formControlName="email">
-                  <span *ngIf="f['email'].touched">
+                  <span *ngIf="f['email'].touched || submitted">
                     <label for="" class="text-danger" *ngIf="f['email'].errors?.['required']">*Required</label>
                     <label for="" class="text-danger" *ngIf="f['email'].errors?.['pattern']">Pattern is not followed</label>
                   </span>
@@ -63,7 +63,7 @@
                 <!-- Password input -->
                 <div class="form-outline mb-4">
                   <input type="password" id="form3Example4" class="form-control" placeholder="Password" formControlName="pass">
-                  <span *ngIf="f['pass'].touched">
+                  <span *ngIf="f['pass'].touched || submitted">
                     <label for="" class="text-danger" *ngIf="f['pass'].errors?.['required']">*Required</label>
                   </span>
                 </div>
