@@ -44,18 +44,23 @@ export class MainComponent implements OnInit {
     return this.updateForm.controls
   }
 
-  updateDet(userId: number) {
-    // console.log(this.data[userId-1])
-    this.f['f_name'].setValue(this.data[userId-1].firstname)
-    this.f['l_name'].setValue(this.data[userId-1].lastname)
-    this.f['username'].setValue(this.data[userId-1].username)
-    this.f['email'].setValue(this.data[userId-1].email)
-    this.f['phone'].setValue(this.data[userId-1].phone)
-    this.f['gender'].setValue(this.data[userId-1].gender)
-    this.f['role'].setValue(this.data[userId-1].role)
-    this.userId = userId
+  autoFill(user: number) {
+    this.userId = user
+    this.data.map((person:any)=>{
+      // console.log(val.id)
+      if(person.id==user){
+        this.f['f_name'].setValue(person.firstname)
+        this.f['l_name'].setValue(person.lastname)
+        this.f['username'].setValue(person.username)
+        this.f['email'].setValue(person.email)
+        this.f['phone'].setValue(person.phone)
+        this.f['gender'].setValue(person.gender)
+        this.f['role'].setValue(person.role)
+      }
+    }
+    )
   }
-  submitData(){
+  updateDet(){
     if(this.updateForm.valid){
       this.updateData = {
         firstname: this.f['f_name'].value,
@@ -69,13 +74,19 @@ export class MainComponent implements OnInit {
       console.log(this.updateData)
       this.webServ.updateService(this.userId,this.updateData).subscribe(res=>{
         alert('Updated Successfully')
+        window.location.reload()      
       })
     }else{
       alert("Form is not Valid!!")
     }
     
   }
-  deleteDet() {
+  deleteDet(user:number) {
+    console.log(user)
+    this.webServ.deleteService(user).subscribe(res=>{
+      alert("User Deleted Successfully!!")
+      window.location.reload()
+    })
 
   }
   infoDet() {

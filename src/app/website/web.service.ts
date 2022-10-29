@@ -14,8 +14,14 @@ export class WebService {
     return this.http.get<any>(this.url)
   }
   updateService(userId:number, data:any){
-    console.log(this.url+"/"+userId)
+    // console.log(this.url+"/"+userId)
     return this.http.put(this.url+"/"+userId,data)
+    
+  }
+  
+  deleteService(userId:number){
+    this.url = this.url + "/" + userId
+    return this.http.delete(this.url)
     
   }
 }

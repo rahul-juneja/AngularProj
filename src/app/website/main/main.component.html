@@ -9,7 +9,7 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active carousel_images">
-            <img src="../../../assets/1.jpg" class="d-block w-100" alt="..." />
+            <img src="../../../assets/images/1.jpg" class="d-block w-100" alt="..." />
             <div class="carousel-caption d-block">
                 <h5>Space Stars</h5>
                 <p>
@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="carousel-item carousel_images">
-            <img src="../../../assets/2.jpg" class="d-block w-100" alt="..." />
+            <img src="../../../assets/images/2.jpg" class="d-block w-100" alt="..." />
             <div class="carousel-caption d-block">
                 <h5>Brick Wall</h5>
                 <p>
@@ -27,7 +27,7 @@
             </div>
         </div>
         <div class="carousel-item carousel_images">
-            <img src="../../../assets/3.png" class="d-block w-100" alt="..." />
+            <img src="../../../assets/images/3.png" class="d-block w-100" alt="..." />
             <div class="carousel-caption d-block">
                 <h5>Peace</h5>
                 <p>
@@ -52,7 +52,7 @@
 <section class="CardS container-fluid row">
     <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="card">
-            <img src="../../../assets/4.jpeg" class="card-img-top h-25" alt="..." />
+            <img src="../../../assets/images/4.jpeg" class="card-img-top h-25" alt="..." />
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">
@@ -65,7 +65,7 @@
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="card">
-            <img src="../../../assets/5.jpg" class="card-img-top" alt="..." />
+            <img src="../../../assets/images/5.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">
@@ -78,7 +78,7 @@
     </div>
     <div class="col-md-4 col-sm-6 col-xs-12">
         <div class="card">
-            <img src="../../../assets/6.jpg" class="card-img-top" alt="..." />
+            <img src="../../../assets/images/6.jpg" class="card-img-top" alt="..." />
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">
@@ -98,6 +98,7 @@
       <th scope="col">ID</th>
       <th scope="col">First Name</th>
       <th scope="col">Email</th>
+      <th scope="col">Role</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
@@ -106,14 +107,15 @@
       <th scope="row">{{items.id}}</th>
       <td>{{items.firstname}}</td>
       <td>{{items.email}}</td>
+      <td>{{items.role}}</td>
       <td>
         <div class="dropdown">
           <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Edit
           </button>
           <ul class="dropdown-menu">
-            <li><button class="dropdown-item" (click)="updateDet(items.id)" data-bs-toggle="modal" data-bs-target="#upDate">Update</button></li>
-            <li><button class="dropdown-item" (click)="deleteDet()">Delete</button></li>
+            <li><button class="dropdown-item" (click)="autoFill(items.id)" data-bs-toggle="modal" data-bs-target="#upDate">Update</button></li>
+            <li><button class="dropdown-item" (click)="deleteDet(items.id)">Delete</button></li>
             <li><button class="dropdown-item" (click)="infoDet()">Details</button></li>
           </ul>
 
@@ -129,7 +131,7 @@
         <h5 class="modal-title" id="SignUpLabel">Your Detials</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form class="reg-form modelForm" id="registration" [formGroup]="updateForm" (ngSubmit)="submitData()">
+      <form class="reg-form modelForm" id="registration" [formGroup]="updateForm" (ngSubmit)="updateDet()">
         <div class="modal-body">
           <div class="Name_details row">
             <div class="f_name col-md-6 col-sm-12 p-2">
@@ -217,7 +219,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-outline-danger w-100" id="submitSign">SignUp</button>
+          <button class="btn btn-outline-danger w-100" id="submitSign" data-bs-dismiss="modal">Update</button>
         </div>
       </form>
     </div>

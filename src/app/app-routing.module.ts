@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminDashComponent } from './admin-panel/admin-dash/admin-dash.component';
+import { ProfileComponent } from './admin-panel/profile/profile.component';
 import { LoginFormComponent } from './user/login-form/login-form.component';
 import { RegFormComponent } from './user/reg-form/reg-form.component';
 import { ResetFormComponent } from './user/reset-form/reset-form.component';
@@ -26,6 +27,9 @@ const routes: Routes = [
   },
   {
     path: "admin", component: AdminDashComponent
+  },
+  {
+    path: "admin/profile", component: ProfileComponent
   }
 ];
 

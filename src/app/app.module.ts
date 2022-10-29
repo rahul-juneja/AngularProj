@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { UserRoutingModule } from './user/user-routing.module';
 import { UserModule } from './user/user.module';
 import { WebsiteModule } from './website/website.module';
+import { AdminPanelModule } from './admin-panel/admin-panel.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { WebsiteModule } from './website/website.module';
     WebsiteModule,
     UserModule,
     UserRoutingModule,
+    AdminPanelModule,
     ReactiveFormsModule,
     HttpClientModule
   ],

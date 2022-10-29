@@ -16,8 +16,9 @@
       "firstname": "Rahul",
       "lastname": "Juneja",
       "username": "juneja",
-      "email": "juneja@orion.in",
-      "phone": "1234567890",
+      "email": "rahul@orion.in",
+      "password": "Welcome@123",
+      "phone": "7696455810",
       "gender": "male",
       "role": "admin_user",
       "id": 1
@@ -27,21 +28,11 @@
       "lastname": "Chaudhary",
       "username": "bikaas",
       "email": "bikaas@chau.in",
+      "password": "Welcome@123",
       "phone": "1234567890",
       "gender": "male",
       "role": "user",
       "id": 2
-    },
-    {
-      "firstname": "Sophia",
-      "lastname": "Juneja",
-      "username": "sophia",
-      "email": "sophia@yopmail.com",
-      "password": "Welcome@123",
-      "phone": "1234567890",
-      "gender": "female",
-      "role": "user",
-      "id": 3
     }
   ],
   "comments": [],
