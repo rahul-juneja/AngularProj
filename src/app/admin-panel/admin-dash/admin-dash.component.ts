@@ -43,6 +43,15 @@ export class AdminDashComponent implements OnInit {
       // console.log(this.updateForm.value)
     })
 
+    $('.sidebarCollapse').on('click', function (sidebar) {
+      sidebar.preventDefault();
+      $('.main-container').toggleClass("sidebar-closed");
+      $('.header.navbar').toggleClass('expand-header');
+      $('.main-container').toggleClass("sbar-open");
+      $('.overlay').toggleClass('show');
+      $('html,body').toggleClass('sidebar-noneoverflow');
+    });
+
   }
 
   get f() {
@@ -102,6 +111,12 @@ export class AdminDashComponent implements OnInit {
   }
   logout(){
     localStorage.clear()
+    this.router.navigateByUrl('/user/login')
+
+  }
+
+  togglefunction(){
+    console.log("here")
   }
 
 }

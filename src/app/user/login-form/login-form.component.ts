@@ -44,10 +44,10 @@ export class LoginFormComponent implements OnInit {
           }
         })
         if (this.isLogged == true) {
-          alert("SuccessFully Logged In!!!")
+          // alert("SuccessFully Logged In!!!")
           localStorage.setItem('email', this.f['email'].value)
           localStorage.setItem('pass', this.f['pass'].value)
-          this.router.navigateByUrl('')
+          this.router.navigateByUrl('/admin')
         }
         else {
           alert("InCorrect Email or Password!")

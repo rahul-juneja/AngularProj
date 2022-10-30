@@ -30,14 +30,21 @@ var App = function() {
             search: '.search-overlay'
         }
     };
-    
+function click(){
+    console.log('click me!!')
+}
+console.log(Selector.mainContainer);
+$('.sidebarCollapse').on('click', ()=>{
+    console.log('clicked')
+})
     var toggleFunction = {
         sidebar: function($recentSubmenu) {
             $('.sidebarCollapse').on('click', function (sidebar) {
                 sidebar.preventDefault();
-                $(Selector.mainContainer).toggleClass("sidebar-closed");
+                console.log('click')
+                $('.main-container').toggleClass("sidebar-closed");
                 $(Selector.mainHeader).toggleClass('expand-header');
-                $(Selector.mainContainer).toggleClass("sbar-open");
+                $('.main-container').toggleClass("sbar-open");
                 $('.overlay').toggleClass('show');
                 $('html,body').toggleClass('sidebar-noneoverflow');
             });
@@ -45,8 +52,8 @@ var App = function() {
         overlay: function() {
             $('#dismiss, .overlay, cs-overlay').on('click', function () {
                 // hide sidebar
-                $(Selector.mainContainer).addClass('sidebar-closed');
-                $(Selector.mainContainer).removeClass('sbar-open');
+                $('.main-container').addClass('sidebar-closed');
+                $('.main-container').removeClass('sbar-open');
                 // hide overlay
                 $('.overlay').removeClass('show');
                 $('html,body').removeClass('sidebar-noneoverflow');

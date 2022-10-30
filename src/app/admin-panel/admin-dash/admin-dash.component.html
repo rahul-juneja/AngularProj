@@ -1,221 +1,541 @@
-<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+<section class="header-container fixed-top">
+  <header class="header navbar navbar-expand-sm">
 
+      <ul class="navbar-item theme-brand flex-row  text-center">
+          <li class="nav-item theme-logo">
+              <a href="admin">
+                  <!-- <img src="assets/img/logo.svg" class="navbar-logo" alt="logo"> -->
+              </a>
+          </li>
+          <li class="nav-item theme-text">
+              <a href="admin" class="nav-link"> GRACIAS </a>
+          </li>
+      </ul>
 
-    <div class="wrapper collapse">
-        <!-- Sidebar  -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <h6 [hidden]="email" >Login First</h6>
-                <h6 [hidden]="!email" >{{email}}</h6>
-                <!-- <img src="../../assets/images/img.jpeg" class="rounded-circle" style="width:100px; "> -->
-                <strong>BS</strong>
-            </div>
-
-            <ul class="list-unstyled components">
-                <li class="active">
-                    <a href="/board" data-toggle="collapse" aria-expanded="false" >
-                        <i class="fas fa-home"></i>
-                        Dashboard
-                    </a>
-                    
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-briefcase"></i>
-                        Profile info
-                    </a>
-                    <a href="change" data-toggle="collapse" aria-expanded="false" >
-                        <i class="fas fa-copy"></i>
-                        Change password
-                    </a>
-                    
-                </li>
-                
-
-                <li>
-                    <a href="#">
-                        <i class="fas fa-paper-plane"></i>
-                        Contact
-
-                    </a>
-                </li>
-                
-                <li>
-                    <a href="login" [hidden]="!email" (click)="logout()">
-                        <i class="fas fa-paper-plane"></i>
-                        Log Out
-
-
-                    </a>
-                    <a href="login" [hidden]="email">
-                        <i class="fas fa-paper-plane"></i>
-                        Login
-
-
-                    </a>
-                </li>
-            </ul>
-
-
-        </nav>
-
-        <!-- Page Content  -->
-        <div id="content">
-
-
-
-            <h2>Welcome to Dashboard !</h2>
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let items of data">
-                    <th scope="row">{{items.id}}</th>
-                    <td>{{items.firstname}}</td>
-                    <td>{{items.email}}</td>
-                    <td>{{items.role}}</td>
-                    <td>
-                      <div class="dropdown">
-                        <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Edit
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><button class="dropdown-item" (click)="autoFill(items.id)" data-bs-toggle="modal" data-bs-target="#upDate">Update</button></li>
-                          <li><button class="dropdown-item" (click)="deleteDet(items.id)">Delete</button></li>
-                          <li><button class="dropdown-item" (click)="infoDet(items.id)">Details</button></li>
-                        </ul>
-              
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <div class="modal fade" id="upDate" tabindex="-1" aria-labelledby="SignUpLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="SignUpLabel">Your Detials</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form class="reg-form modelForm" id="registration" [formGroup]="updateForm" (ngSubmit)="updateDet()">
-                      <div class="modal-body">
-                        <div class="Name_details row">
-                          <div class="f_name col-md-6 col-sm-12 p-2">
-                            <div class="d-flex justify-content-between">
-                              <label for="f_name" class="form-label">First Name</label>
-                              <label id="fname_val" for="fname_val" class="col-4  form-label text-danger"
-                                  *ngIf="f['f_name'].touched && f['f_name'].errors?.['required'] ">*Required</label>
-                                <label id="fname_val" for="fname_val" class="col-4  form-label text-danger"
-                                  *ngIf="f['f_name'].touched && f['f_name'].errors?.['minlength'] ">More than 3 letters</label>
-                            </div>
-                            <input type="text" name="f_name" class="form-control" id="f_name" formControlName="f_name">
-                          </div>
-                          <div class="l_name col-md-6 col-sm-12 p-2">
-                            <div class="d-flex justify-content-between">
-                              <label for="l_name" class="form-label">Last Name</label>
-                              <label id="fname_val" for="fname_val" class="col-4  form-label text-danger"
-                                  *ngIf="f['l_name'].touched && f['l_name'].errors?.['required'] ">*Required</label>
-                                <label id="fname_val" for="fname_val" class="col-4  form-label text-danger"
-                                  *ngIf="f['l_name'].touched && f['l_name'].errors?.['minlength'] ">More than 3 letters</label>
-                              <label id="lname_val" for="lname_val" class="form-label "></label>
-                            </div>
-                            <input type="text" name="l_name" class="form-control" id="l_name" formControlName="l_name">
-                          </div>
-                          <div class="username p-2">
-                            <div class="d-flex justify-content-between">
-                              <label for="username" class="form-label">Username</label>
-                              <label id="username_val" for="username_val" class="form-label"></label>
-                            </div>
-                            <input type="text" name="username" class="form-control" id="username" formControlName="username">
-                          </div>
-                        </div>
-                        <div class="Email_and_Password row">
-                          <div class="email p-2">
-                            <div class="d-flex justify-content-between">
-                              <label for="email" class="form-label">Email</label>
-                              <label id="email_val" for="email_val" class="form-label"></label>
-                            </div>
-                            <input type="email" name="email" class="form-control" id="email" formControlName="email">
-                          </div>
-              
-                          <div class="email p-2">
-                            <div class="d-flex justify-content-between">
-                              <label for="phone" class="form-label">Phone</label>
-                              <label id="phone_val" for="phone_val" class="form-label"></label>
-                            </div>
-                            <input type="phone" name="phone" class="form-control" id="phone" formControlName="phone">
-                            <span for="" *ngIf="f['phone'].touched">
-                              <label class="text-danger" for="" *ngIf="f['phone'].errors?.['required']">
-                                *Required
-                              </label>
-                              <label for="" class="text-danger" *ngIf="f['phone'].errors?.['pattern']">
-                                It must be 10 digit number
-                              </label>
-                            </span>
-                          </div>
-                          <div class="col-md-12 col-sm-12 col-xs-12 btn-group pb-3 pt-4" role="group"
-                              aria-label="Basic radio toggle button group">
-                              <input type="radio" class="btn-check gender" formControlName="gender" name="gender" id="male" value="male" autocomplete="off" />
-                              <label class="btn btn-outline-primary" for="male">Male</label>
-              
-                              <input type="radio" class="btn-check gender" formControlName="gender" name="gender" id="female" value="female"
-                                autocomplete="off" />
-                              <label class="btn btn-outline-primary" for="female">Female</label>
-              
-                              <span for="" *ngIf="f['gender'].touched">
-                                <label class="text-danger" for="" *ngIf="f['gender'].errors?.['required']">
-                                  *Required
-                                </label>
-                              </span>
-                            </div>
-                          <div class="role p-2">
-                              <div class="role p-2">
-                                  <select name="role" id="role" class="form-select" formControlName="role">
-                                    <option value="">Select Your Role</option>
-                                    <option value="admin_user">Admin</option>
-                                    <option value="user">Normal User</option>
-                                  </select>
-                                </div>
-                                <span for="" *ngIf="f['role'].touched">
-                                  <label class="text-danger" for="" *ngIf="f['role'].errors?.['required']">
-                                    *Required
-                                  </label>
-                                </span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button class="btn btn-outline-danger w-100" id="submitSign" data-bs-dismiss="modal">Update</button>
-                      </div>
-                    </form>
+      <ul class="navbar-item flex-row ml-md-0 ml-auto">
+          <li class="nav-item align-self-center search-animated">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-search toggle-search">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <form class="form-inline search-full form-inline search" role="search">
+                  <div class="search-bar">
+                      <input type="text" class="form-control search-form-control  ml-lg-auto"
+                          placeholder="Search...">
                   </div>
-                </div>
+              </form>
+          </li>
+      </ul>
+
+      <ul class="navbar-item flex-row ml-md-auto last-item">
+
+          <li class="nav-item dropdown language-dropdown">
+              <a  class="nav-link dropdown-toggle" id="language-dropdown"
+                  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <!-- <img src="assets/img/ca.png" class="flag-width" alt="flag"> -->
+              </a>
+              <div class="dropdown-menu position-absolute" aria-labelledby="language-dropdown">
+                  <!-- <a class="dropdown-item d-flex" ><img src="assets/img/de.png"
+                          class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;German</span></a>
+                  <a class="dropdown-item d-flex" ><img src="assets/img/jp.png"
+                          class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;Japanese</span></a>
+                  <a class="dropdown-item d-flex" ><img src="assets/img/fr.png"
+                          class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;French</span></a>
+                  <a class="dropdown-item d-flex" ><img src="assets/img/ca.png"
+                          class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;English</span></a> -->
               </div>
+          </li>
+
+          <li class="nav-item dropdown message-dropdown">
+              <a href="" class="nav-link dropdown-toggle" id="messageDropdown" data-bs-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="feather feather-mail">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                      </path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+              </a>
+              <div class="dropdown-menu position-absolute" aria-labelledby="messageDropdown">
+                  <a class="dropdown-item">
+                      <div class="">
+
+                          <div class="media">
+                              <div class="user-img">
+                                  <div class="avatar avatar-xl">
+                                      <span class="avatar-title rounded-circle">KY</span>
+                                  </div>
+                              </div>
+                              <div class="media-body">
+                                  <div class="">
+                                      <h5 class="usr-name">Kara Young</h5>
+                                      <p class="msg-title">ACCOUNT UPDATE</p>
+                                  </div>
+                              </div>
+                          </div>
+
+                      </div>
+                  </a>
+                  <a class="dropdown-item">
+                      <div class="">
+                          <div class="media">
+                              <div class="user-img">
+                                  <div class="avatar avatar-xl">
+                                      <span class="avatar-title rounded-circle">DA</span>
+                                  </div>
+                              </div>
+                              <div class="media-body">
+                                  <div class="">
+                                      <h5 class="usr-name">Daisy Anderson</h5>
+                                      <p class="msg-title">ACCOUNT UPDATE</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </a>
+                  <a class="dropdown-item">
+                      <div class="">
+
+                          <div class="media">
+                              <div class="user-img">
+                                  <div class="avatar avatar-xl">
+                                      <span class="avatar-title rounded-circle">OG</span>
+                                  </div>
+                              </div>
+                              <div class="media-body">
+                                  <div class="">
+                                      <h5 class="usr-name">Oscar Garner</h5>
+                                      <p class="msg-title">ACCOUNT UPDATE</p>
+                                  </div>
+                              </div>
+                          </div>
+
+                      </div>
+                  </a>
+              </div>
+          </li>
 
 
+
+
+          <li class="nav-item dropdown notification-dropdown">
+              <a href="" class="nav-link dropdown-toggle" id="notificationDropdown" data-bs-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="feather feather-bell">
+                      <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                      <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                  </svg><span class="badge badge-success"></span>
+              </a>
+              <div class="dropdown-menu position-absolute" aria-labelledby="notificationDropdown">
+                  <div class="notification-scroll">
+
+                      <div class="dropdown-item">
+                          <div class="media server-log">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round" class="feather feather-server">
+                                  <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                                  <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                                  <line x1="6" y1="6" x2="6" y2="6"></line>
+                                  <line x1="6" y1="18" x2="6" y2="18"></line>
+                              </svg>
+                              <div class="media-body">
+                                  <div class="data-info">
+                                      <h6 class="">Server Rebooted</h6>
+                                      <p class="">45 min ago</p>
+                                  </div>
+
+                                  <div class="icon-status">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                          stroke-linecap="round" stroke-linejoin="round"
+                                          class="feather feather-x">
+                                          <line x1="18" y1="6" x2="6" y2="18"></line>
+                                          <line x1="6" y1="6" x2="18" y2="18"></line>
+                                      </svg>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="dropdown-item">
+                          <div class="media ">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round" class="feather feather-heart">
+                                  <path
+                                      d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                  </path>
+                              </svg>
+                              <div class="media-body">
+                                  <div class="data-info">
+                                      <h6 class="">Licence Expiring Soon</h6>
+                                      <p class="">8 hrs ago</p>
+                                  </div>
+
+                                  <div class="icon-status">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                          stroke-linecap="round" stroke-linejoin="round"
+                                          class="feather feather-x">
+                                          <line x1="18" y1="6" x2="6" y2="18"></line>
+                                          <line x1="6" y1="6" x2="18" y2="18"></line>
+                                      </svg>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="dropdown-item">
+                          <div class="media file-upload">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                  stroke-linejoin="round" class="feather feather-file-text">
+                                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                  <polyline points="14 2 14 8 20 8"></polyline>
+                                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                                  <polyline points="10 9 9 9 8 9"></polyline>
+                              </svg>
+                              <div class="media-body">
+                                  <div class="data-info">
+                                      <h6 class="">Kelly Portfolio.pdf</h6>
+                                      <p class="">670 kb</p>
+                                  </div>
+
+                                  <div class="icon-status">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                          stroke-linecap="round" stroke-linejoin="round"
+                                          class="feather feather-check">
+                                          <polyline points="20 6 9 17 4 12"></polyline>
+                                      </svg>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </li>
+
+          <li class="nav-item dropdown user-profile-dropdown">
+              <a href="" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-bs-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="true">
+                  <img src="https://cdn-icons-png.flaticon.com/512/428/428933.png" alt="avatar">
+              </a>
+              <div class="dropdown-menu position-absolute" *ngFor="let items of data" aria-labelledby="userProfileDropdown">
+                  <div class="">
+                      <div class="dropdown-item">
+                          <a class="nav-link"  (click)="autoFill(items.id)" data-bs-toggle="modal" data-bs-target="#upDate"><svg xmlns="http://www.w3.org/2000/svg"
+                                  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                  class="feather feather-user">
+                                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                  <circle cx="12" cy="7" r="4"></circle>
+                              </svg> Profile Settings</a>
+                      </div>
+                      
+                      <div class="dropdown-item">
+                          <a class="nav-link" href="admin"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                  height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                  class="feather feather-inbox">
+                                  <polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
+                                  <path
+                                      d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z">
+                                  </path>
+                              </svg> Inbox</a>
+                      </div>
+                      <div class="dropdown-item">
+                          <a class="nav-link" href="admin"><svg xmlns="http://www.w3.org/2000/svg"
+                                  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                  class="feather feather-lock">
+                                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                              </svg> Lock Screen</a>
+                      </div>
+                      <div class="dropdown-item">
+                          <a class="nav-link" (click)="logout()" href="/user/login"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                  height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                  class="feather feather-log-out">
+                                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                  <polyline points="16 17 21 12 16 7"></polyline>
+                                  <line x1="21" y1="12" x2="9" y2="12"></line>
+                              </svg> Sign Out</a>
+                      </div>
+                  </div>
+                  
+              </div>
+          </li>
+
+      </ul>
+    </header>
+  </section>
+ 
+
+
+<section class="sub-header-container">
+  <header class="header navbar navbar-expand-sm">
+    <a class="sidebarCollapse" data-placement="bottom"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></a>
+  
+    <ul class="navbar-nav flex-row">
+        <li>
+            <div class="page-header">
+  
+                <nav class="breadcrumb-one" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a >Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><span>Sales</span></li>
+                    </ol>
+                </nav>
+  
+            </div>
+        </li>
+    </ul>
+    <ul class="navbar-nav flex-row ms-auto">
+        <li class="nav-item more-dropdown">
+            <div class="dropdown  custom-dropdown-icon">
+                <a class="dropdown-toggle btn" href="#" role="button" id="customDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Settings</span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg></a>
+  
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="customDropdown">
+                    <a class="dropdown-item" data-value="Settings" >Settings</a>
+                    <a class="dropdown-item" data-value="Mail" >Mail</a>
+                    <a class="dropdown-item" data-value="Print" >Print</a>
+                    <a class="dropdown-item" data-value="Download" >Download</a>
+                    <a class="dropdown-item" data-value="Share" >Share</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+  </header>
+</section>
+
+
+<section class="main-container" id="container">
+
+        <div class="overlay"></div>
+        <div class="search-overlay"></div>
+
+        <!--  BEGIN SIDEBAR  -->
+        <div class="sidebar-wrapper sidebar-theme">
+            
+            <nav id="sidebar">
+                <div class="shadow-bottom"></div>
+                <ul class="list-unstyled menu-categories ps ps--active-y" id="accordionExample">
+                  <li class="menu">
+                    <a href="#dashboard" data-active="true" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            <span>Dashboard</span>
+                        </div>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </div>
+                    </a>
+                    <ul class="collapse submenu list-unstyled show" id="dashboard" data-parent="#accordionExample">
+                        <li class="active">
+                            <a class="nav-link" ref="index.html"> Sales </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" ref="index2.html"> Analytics </a>
+                        </li>
+                    </ul>
+                </li>
+
+                
+                
+                <li class="menu">
+                    <a href="#users" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                            <span>Users</span>
+                        </div>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </div>
+                    </a>
+                    <ul class="collapse submenu list-unstyled" id="users" data-parent="#accordionExample">
+                        <li>
+                            <a class="nav-link" href=""> Profile </a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href=""> Account Settings </a>
+                        </li>
+                    </ul>
+                </li>
+                    
+                <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 518px; right: -4px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 300px;"></div></div></ul>
+                
+            </nav>
 
         </div>
+        <!--  END SIDEBAR  -->
+        <div id="content" class="main-content">
+          <div class="layout-px-spacing">
+
+              <div class="row layout-top-spacing justify-content-center align-self-center">
+
+                <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+                  <div class="widget widget-table-two">
+
+                      <div class="widget-heading">
+                          <h5 class="">Recent Orders</h5>
+                      </div>
+
+                      <div class="widget-content">
+                          <div class="table-responsive">
+                              <table class="table overflow-hidden text-center">
+                                  <thead>
+                                      <tr>
+                                          <th><div class="th-content">Name</div></th>
+                                          <th><div class="th-content">Username</div></th>
+                                          <th><div class="th-content">Email</div></th>
+                                          <th><div class="th-content">Role</div></th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr *ngFor="let items of data" (click)="infoDet(items.id)">
+                                          <td><div class="td-content customer-name">
+                                            <img *ngIf="items.gender=='male'" src="https://cdn-icons-png.flaticon.com/512/4140/4140061.png">
+                                            <img *ngIf="items.gender=='female'" src="https://cdn-icons-png.flaticon.com/512/4140/4140053.png">
+                                            <span>{{items.firstname}}</span>
+                                          </div></td>
+                                          <td><div class="td-content product-invoice">{{items.username}}</div></td>
+                                          <td><div class="td-content product-brand text-primary">{{items.email}}</div></td>
+                                          <td><div class="td-content">
+                                            <span class="badge" [ngClass]="items.role=='admin_user'?'badge-success' : 'badge-danger'">{{items.role}}</span>
+                                          </div></td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+                  
+
+              </div>
+
+          </div>
+          <div class="footer-wrapper">
+              <div class="footer-section f-section-1">
+                  <p class="">Copyright © 2022 <a target="_blank">GRACIAS</a>, All rights reserved.</p>
+              </div>
+              <div class="footer-section f-section-2">
+                  <p class="">Coded with <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></p>
+              </div>
+          </div>
+      </div>
+    </section>
+
+    
+
+    <div class="modal fade" id="upDate" tabindex="-1" aria-labelledby="SignUpLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="SignUpLabel">Your Detials</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form class="reg-form modelForm" id="registration" [formGroup]="updateForm" (ngSubmit)="updateDet()">
+            <div class="modal-body">
+              <div class="Name_details row">
+                <div class="f_name col-md-6 col-sm-12 p-2">
+                  <div class="d-flex justify-content-between">
+                    <label for="f_name" class="form-label">First Name</label>
+                    <label id="fname_val" for="fname_val" class="col-4  form-label text-danger"
+                        *ngIf="f['f_name'].touched && f['f_name'].errors?.['required'] ">*Required</label>
+                      <label id="fname_val" for="fname_val" class="col-4  form-label text-danger"
+                        *ngIf="f['f_name'].touched && f['f_name'].errors?.['minlength'] ">More than 3 letters</label>
+                  </div>
+                  <input type="text" name="f_name" class="form-control" id="f_name" formControlName="f_name">
+                </div>
+                <div class="l_name col-md-6 col-sm-12 p-2">
+                  <div class="d-flex justify-content-between">
+                    <label for="l_name" class="form-label">Last Name</label>
+                    <label id="fname_val" for="fname_val" class="col-4  form-label text-danger"
+                        *ngIf="f['l_name'].touched && f['l_name'].errors?.['required'] ">*Required</label>
+                      <label id="fname_val" for="fname_val" class="col-4  form-label text-danger"
+                        *ngIf="f['l_name'].touched && f['l_name'].errors?.['minlength'] ">More than 3 letters</label>
+                    <label id="lname_val" for="lname_val" class="form-label "></label>
+                  </div>
+                  <input type="text" name="l_name" class="form-control" id="l_name" formControlName="l_name">
+                </div>
+                <div class="username p-2">
+                  <div class="d-flex justify-content-between">
+                    <label for="username" class="form-label">Username</label>
+                    <label id="username_val" for="username_val" class="form-label"></label>
+                  </div>
+                  <input type="text" name="username" class="form-control" id="username" formControlName="username">
+                </div>
+              </div>
+              <div class="Email_and_Password row">
+                <div class="email p-2">
+                  <div class="d-flex justify-content-between">
+                    <label for="email" class="form-label">Email</label>
+                    <label id="email_val" for="email_val" class="form-label"></label>
+                  </div>
+                  <input type="email" name="email" class="form-control" id="email" formControlName="email">
+                </div>
+    
+                <div class="email p-2">
+                  <div class="d-flex justify-content-between">
+                    <label for="phone" class="form-label">Phone</label>
+                    <label id="phone_val" for="phone_val" class="form-label"></label>
+                  </div>
+                  <input type="phone" name="phone" class="form-control" id="phone" formControlName="phone">
+                  <span for="" *ngIf="f['phone'].touched">
+                    <label class="text-danger" for="" *ngIf="f['phone'].errors?.['required']">
+                      *Required
+                    </label>
+                    <label for="" class="text-danger" *ngIf="f['phone'].errors?.['pattern']">
+                      It must be 10 digit number
+                    </label>
+                  </span>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 btn-group pb-3 pt-4" role="group"
+                    aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check gender" formControlName="gender" name="gender" id="male" value="male" autocomplete="off" />
+                    <label class="btn btn-outline-primary" for="male">Male</label>
+    
+                    <input type="radio" class="btn-check gender" formControlName="gender" name="gender" id="female" value="female"
+                      autocomplete="off" />
+                    <label class="btn btn-outline-primary" for="female">Female</label>
+    
+                    <span for="" *ngIf="f['gender'].touched">
+                      <label class="text-danger" for="" *ngIf="f['gender'].errors?.['required']">
+                        *Required
+                      </label>
+                    </span>
+                  </div>
+                <div class="role p-2">
+                    <div class="role p-2">
+                        <select name="role" id="role" class="form-select" formControlName="role">
+                          <option value="">Select Your Role</option>
+                          <option value="admin_user">Admin</option>
+                          <option value="user">Normal User</option>
+                        </select>
+                      </div>
+                      <span for="" *ngIf="f['role'].touched">
+                        <label class="text-danger" for="" *ngIf="f['role'].errors?.['required']">
+                          *Required
+                        </label>
+                      </span>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-outline-danger w-100" id="submitSign" data-bs-dismiss="modal">Update</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-            });
-        });
-    </script>

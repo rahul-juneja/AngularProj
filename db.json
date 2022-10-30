@@ -13,7 +13,7 @@
   ],
   "signup": [
     {
-      "firstname": "Rahul",
+      "firstname": "Dhiraj",
       "lastname": "Juneja",
       "username": "juneja",
       "email": "rahul@orion.in",
@@ -28,9 +28,8 @@
       "lastname": "Chaudhary",
       "username": "bikaas",
       "email": "bikaas@chau.in",
-      "password": "Welcome@123",
       "phone": "1234567890",
-      "gender": "male",
+      "gender": "female",
       "role": "user",
       "id": 2
     }

@@ -6,8 +6,10 @@
                     <div class="row g-0">
                         <div class="col-md-4 gradient-custom text-center text-white"
                             style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                                alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+                            <img *ngIf="profile.gender=='male'" src="https://cdn-icons-png.flaticon.com/512/4140/4140061.png"
+                                alt="Avatar" class="img-fluid my-5" style="width: 120px;" />
+                            <img *ngIf="profile.gender=='female'" src="https://cdn-icons-png.flaticon.com/512/4140/4140053.png"
+                                alt="Avatar" class="img-fluid my-5" style="width: 120px;" />
                             <h5>{{profile.firstname}} {{profile.lastname}}</h5>
                             <p>{{profile.username}}</p>
                             <i class="far fa-edit mb-5"></i>
