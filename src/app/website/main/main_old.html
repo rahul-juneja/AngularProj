@@ -1,0 +1,227 @@
+<!-- <section id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active carousel_images">
+            <img src="../../../assets/images/1.jpg" class="d-block w-100" alt="..." />
+            <div class="carousel-caption d-block">
+                <h5>Space Stars</h5>
+                <p>
+                    This picture show the beautiful stars in the Galaxy
+                </p>
+            </div>
+        </div>
+        <div class="carousel-item carousel_images">
+            <img src="../../../assets/images/2.jpg" class="d-block w-100" alt="..." />
+            <div class="carousel-caption d-block">
+                <h5>Brick Wall</h5>
+                <p>
+                    When you hit a wall focus on Brick.
+                </p>
+            </div>
+        </div>
+        <div class="carousel-item carousel_images">
+            <img src="../../../assets/images/3.png" class="d-block w-100" alt="..." />
+            <div class="carousel-caption d-block">
+                <h5>Peace</h5>
+                <p>
+                    Don't Let the behaviour of other distroy the inner Peace
+                </p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+
+</section>
+
+<section class="CardS container-fluid row">
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="card">
+            <img src="../../../assets/images/4.jpeg" class="card-img-top h-25" alt="..." />
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                    Some quick example text to build on the card title and make up
+                    the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="card">
+            <img src="../../../assets/images/5.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                    Some quick example text to build on the card title and make up
+                    the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="card">
+            <img src="../../../assets/images/6.jpg" class="card-img-top" alt="..." />
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                    Some quick example text to build on the card title and make up
+                    the bulk of the card's content.
+                </p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+
+<table class="table vh-100" style="background-color: white;">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Role</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let items of data">
+        <th scope="row">{{items.id}}</th>
+        <td>{{items.firstname}}</td>
+        <td>{{items.email}}</td>
+        <td>{{items.role}}</td>
+        <td>
+          <div class="dropdown">
+            <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Edit
+            </button>
+            <ul class="dropdown-menu">
+              <li><button class="dropdown-item" (click)="autoFill(items.id)" data-bs-toggle="modal" data-bs-target="#upDate">Update</button></li>
+              <li><button class="dropdown-item" (click)="deleteDet(items.id)">Delete</button></li>
+              <li><button class="dropdown-item" (click)="infoDet()">Details</button></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="modal fade" id="upDate" tabindex="-1" aria-labelledby="SignUpLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="SignUpLabel">Your Detials</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form class="reg-form modelForm" id="registration" [formGroup]="updateForm" (ngSubmit)="updateDet()">
+          <div class="modal-body">
+            <div class="Name_details row">
+              <div class="f_name col-md-6 col-sm-12 p-2">
+                <div class="d-flex justify-content-between">
+                  <label for="f_name" class="form-label">First Name</label>
+                  <label id="fname_val" for="fname_val" class="col-4  form-label text-danger"
+                      *ngIf="f['f_name'].touched && f['f_name'].errors?.['required'] ">*Required</label>
+                    <label id="fname_val" for="fname_val" class="col-4  form-label text-danger"
+                      *ngIf="f['f_name'].touched && f['f_name'].errors?.['minlength'] ">More than 3 letters</label>
+                </div>
+                <input type="text" name="f_name" class="form-control" id="f_name" formControlName="f_name">
+              </div>
+              <div class="l_name col-md-6 col-sm-12 p-2">
+                <div class="d-flex justify-content-between">
+                  <label for="l_name" class="form-label">Last Name</label>
+                  <label id="fname_val" for="fname_val" class="col-4  form-label text-danger"
+                      *ngIf="f['l_name'].touched && f['l_name'].errors?.['required'] ">*Required</label>
+                    <label id="fname_val" for="fname_val" class="col-4  form-label text-danger"
+                      *ngIf="f['l_name'].touched && f['l_name'].errors?.['minlength'] ">More than 3 letters</label>
+                  <label id="lname_val" for="lname_val" class="form-label "></label>
+                </div>
+                <input type="text" name="l_name" class="form-control" id="l_name" formControlName="l_name">
+              </div>
+              <div class="username p-2">
+                <div class="d-flex justify-content-between">
+                  <label for="username" class="form-label">Username</label>
+                  <label id="username_val" for="username_val" class="form-label"></label>
+                </div>
+                <input type="text" name="username" class="form-control" id="username" formControlName="username">
+              </div>
+            </div>
+            <div class="Email_and_Password row">
+              <div class="email p-2">
+                <div class="d-flex justify-content-between">
+                  <label for="email" class="form-label">Email</label>
+                  <label id="email_val" for="email_val" class="form-label"></label>
+                </div>
+                <input type="email" name="email" class="form-control" id="email" formControlName="email">
+              </div>
+  
+              <div class="email p-2">
+                <div class="d-flex justify-content-between">
+                  <label for="phone" class="form-label">Phone</label>
+                  <label id="phone_val" for="phone_val" class="form-label"></label>
+                </div>
+                <input type="phone" name="phone" class="form-control" id="phone" formControlName="phone">
+                <span for="" *ngIf="f['phone'].touched">
+                  <label class="text-danger" for="" *ngIf="f['phone'].errors?.['required']">
+                    *Required
+                  </label>
+                  <label for="" class="text-danger" *ngIf="f['phone'].errors?.['pattern']">
+                    It must be 10 digit number
+                  </label>
+                </span>
+              </div>
+              <div class="col-md-12 col-sm-12 col-xs-12 btn-group pb-3 pt-4" role="group"
+                  aria-label="Basic radio toggle button group">
+                  <input type="radio" class="btn-check gender" formControlName="gender" name="gender" id="male" value="male" autocomplete="off" />
+                  <label class="btn btn-outline-primary" for="male">Male</label>
+  
+                  <input type="radio" class="btn-check gender" formControlName="gender" name="gender" id="female" value="female"
+                    autocomplete="off" />
+                  <label class="btn btn-outline-primary" for="female">Female</label>
+  
+                  <span for="" *ngIf="f['gender'].touched">
+                    <label class="text-danger" for="" *ngIf="f['gender'].errors?.['required']">
+                      *Required
+                    </label>
+                  </span>
+                </div>
+              <div class="role p-2">
+                  <div class="role p-2">
+                      <select name="role" id="role" class="form-select" formControlName="role">
+                        <option value="">Select Your Role</option>
+                        <option value="admin_user">Admin</option>
+                        <option value="user">Normal User</option>
+                      </select>
+                    </div>
+                    <span for="" *ngIf="f['role'].touched">
+                      <label class="text-danger" for="" *ngIf="f['role'].errors?.['required']">
+                        *Required
+                      </label>
+                    </span>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-outline-danger w-100" id="submitSign" data-bs-dismiss="modal">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
