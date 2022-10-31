@@ -14,7 +14,7 @@ export class LoginFormComponent implements OnInit {
 
   loginForm !: FormGroup
   firstname: any
-  user_1: any;
+  user: any;
   isLogged: boolean = false
   submitted:boolean = false
 
@@ -37,16 +37,17 @@ export class LoginFormComponent implements OnInit {
     if (this.loginForm.valid) {
 
       this.authService.loginService().subscribe((data: any) => {
-        data.map((val: { email: any, password: any }) => {
+        data.map((val:any) => {
           if (val.email == this.f['email'].value && val.password == this.f['pass'].value) {
             this.isLogged = true
-            localStorage.clear()
+            this.user = val.id
           }
         })
         if (this.isLogged == true) {
           // alert("SuccessFully Logged In!!!")
           localStorage.setItem('email', this.f['email'].value)
           localStorage.setItem('pass', this.f['pass'].value)
+          localStorage.setItem('id', this.user)
           this.router.navigateByUrl('/admin')
         }
         else {
@@ -56,22 +57,5 @@ export class LoginFormComponent implements OnInit {
     }else{
       this.submitted = true
     }
-  }
-  // showConfig() {
-  //   this.authService.loginService().subscribe((data:any)=> this.user ={
-  //         firstname: data.firstname,
-  //         lastname:  data.lastname,
-  //     });
-  // }
-  showConfig() {
-    this.authService.loginService().subscribe((data: any) => {
-      data.map((value: { firstname: any; }) => {
-        if (value.firstname == 'rahul') {
-          this.user_1 = value
-        }
-      })
-      console.log(this.user_1)
-    });
-
   }
 }

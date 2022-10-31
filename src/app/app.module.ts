@@ -9,6 +9,7 @@ import { UserRoutingModule } from './user/user-routing.module';
 import { UserModule } from './user/user.module';
 import { WebsiteModule } from './website/website.module';
 import { AdminPanelModule } from './admin-panel/admin-panel.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AdminPanelModule } from './admin-panel/admin-panel.module';
     UserRoutingModule,
     AdminPanelModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

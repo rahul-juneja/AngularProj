@@ -63,10 +63,7 @@ export class RegFormComponent implements OnInit {
       }
       this.authService.regService(this.data).subscribe(res=>{
         alert('SignIn Successfully!!!')
-        localStorage.setItem('email',this.data.email)
-        localStorage.setItem('pass',this.data.password)
-        this.regForm.reset()
-        this.router.navigateByUrl('')
+        this.router.navigate(['', 'login'])
 
       })
       

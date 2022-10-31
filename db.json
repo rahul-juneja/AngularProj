@@ -13,12 +13,12 @@
   ],
   "signup": [
     {
-      "firstname": "Dhiraj",
+      "firstname": "Rahul",
       "lastname": "Juneja",
-      "username": "juneja",
+      "username": "rahul",
       "email": "rahul@orion.in",
-      "password": "Welcome@123",
-      "phone": "7696455810",
+      "password": "Dhiraj@123",
+      "phone": "1234567890",
       "gender": "male",
       "role": "admin_user",
       "id": 1

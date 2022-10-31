@@ -4,6 +4,7 @@ import { AdminDashComponent } from './admin-dash/admin-dash.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -15,7 +16,8 @@ import { ProfileComponent } from './profile/profile.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ]
 })
 export class AdminPanelModule { }

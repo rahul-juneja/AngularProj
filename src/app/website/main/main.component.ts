@@ -35,8 +35,8 @@ export class MainComponent implements OnInit {
 
 
     this.webServ.profileService().subscribe((data: any) => {
-      // console.log(data)
       this.data = data
+      console.log(data)
       // console.log(this.updateForm.value)
     })
 

@@ -13,8 +13,11 @@ export class AdminDashComponent implements OnInit {
   updateForm!: FormGroup
   updateData: any
   email:any
-  
+  changePassword!: FormGroup
   userId!:number
+  logId!:number
+  pass: any;
+  confirm!: boolean;
 
   constructor(private router: Router, private webServ: WebService,
     private formBuilder: FormBuilder
@@ -23,6 +26,7 @@ export class AdminDashComponent implements OnInit {
   ngOnInit(): void {
 
     this.email = localStorage.getItem('email')
+    this.pass = localStorage.getItem('pass')
 
 
     this.updateForm = this.formBuilder.group({
@@ -35,11 +39,22 @@ export class AdminDashComponent implements OnInit {
       role: ['', [Validators.required]],
       gender: ['', [Validators.required]],
     })
+    this.changePassword = this.formBuilder.group({
+      oldpass: ['', [Validators.required]],
+      pass: ['', [Validators.required, Validators.pattern('((?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*?&]).{8,30})')]],
+      repass: ['', [Validators.required]]
+    })
 
 
     this.webServ.profileService().subscribe((data: any) => {
       // console.log(data)
       this.data = data
+      data.map((item:any)=>{
+        if(item.email == this.email && item.password == this.pass){
+          this.logId = item.id
+          console.log(this.logId)
+        }
+      })
       // console.log(this.updateForm.value)
     })
 
@@ -57,6 +72,9 @@ export class AdminDashComponent implements OnInit {
   get f() {
     return this.updateForm.controls
   }
+  get change(){
+    return this.changePassword.controls
+  }
 
   autoFill(user: number) {
     this.userId = user
@@ -67,13 +85,11 @@ export class AdminDashComponent implements OnInit {
         this.f['l_name'].setValue(person.lastname)
         this.f['username'].setValue(person.username)
         this.f['email'].setValue(person.email)
-        this.f['pass'].setValue(person.password)
         this.f['phone'].setValue(person.phone)
         this.f['gender'].setValue(person.gender)
         this.f['role'].setValue(person.role)
       }
-    }
-    )
+    })
   }
   updateDet(){
     if(this.updateForm.valid){
@@ -109,10 +125,39 @@ export class AdminDashComponent implements OnInit {
     localStorage.setItem('id', user)
     this.router.navigateByUrl('/admin/profile')
   }
+  changePass(user:number){
+    if(this.changePassword.valid){
+      this.data.map((person:any)=>{
+        if(person.id == user){
+          if(this.change['oldpass'].value == person.password && this.confirm){
+            console.log(person)
+            person.password = this.change['pass'].value
+            console.log(person)
+            this.webServ.updateService(person.id, person).subscribe(res=>{
+              alert("Password Updated")
+              localStorage.setItem('pass', person.password)
+              window.location.reload()
+            })
+
+          }else{
+            console.log('Try Again!!!')
+          }
+        }
+      })
+    }
+  }
   logout(){
     localStorage.clear()
     this.router.navigateByUrl('/user/login')
 
+  }
+  confirmPass() {
+    if (this.change['pass'].value === this.change['repass'].value) {
+      this.confirm = true;
+    }
+    else {
+      this.confirm = false;
+    } 
   }
 
   togglefunction(){
