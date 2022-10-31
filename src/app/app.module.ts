@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserRoutingModule } from './user/user-routing.module';
 import { UserModule } from './user/user.module';
 import { WebsiteModule } from './website/website.module';
 import { AdminPanelModule } from './admin-panel/admin-panel.module';
@@ -20,7 +19,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AppRoutingModule,
     WebsiteModule,
     UserModule,
-    UserRoutingModule,
     AdminPanelModule,
     ReactiveFormsModule,
     HttpClientModule,

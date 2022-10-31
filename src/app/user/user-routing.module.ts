@@ -6,7 +6,7 @@ import { ResetFormComponent } from './reset-form/reset-form.component';
 
 const routes: Routes = [
     {
-      path: "login", component: LoginFormComponent
+      path: 'login', component: LoginFormComponent
     },
     {
       path: "register", component: RegFormComponent
@@ -17,7 +17,7 @@ const routes: Routes = [
   ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 
