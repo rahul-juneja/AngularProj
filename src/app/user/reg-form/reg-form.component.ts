@@ -48,7 +48,6 @@ export class RegFormComponent implements OnInit {
   }
 
   regSubmit() {
-    this.submitted = true
     console.log(this.regForm.value)
     if(this.regForm.valid){
       this.data = {
@@ -67,6 +66,8 @@ export class RegFormComponent implements OnInit {
 
       })
       
+    }else{
+      this.submitted = true
     }
 
   }

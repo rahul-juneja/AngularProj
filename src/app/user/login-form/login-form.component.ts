@@ -33,6 +33,7 @@ export class LoginFormComponent implements OnInit {
   get f() {
     return this.loginForm.controls
   }
+  
   loginSubmit() {
     if (this.loginForm.valid) {
 
@@ -45,10 +46,10 @@ export class LoginFormComponent implements OnInit {
         })
         if (this.isLogged == true) {
           // alert("SuccessFully Logged In!!!")
-          localStorage.setItem('email', this.f['email'].value)
+            localStorage.setItem('email', this.f['email'].value)
           localStorage.setItem('pass', this.f['pass'].value)
           localStorage.setItem('id', this.user)
-          this.router.navigateByUrl('/admin')
+          this.router.navigateByUrl('/')
         }
         else {
           alert("InCorrect Email or Password!")

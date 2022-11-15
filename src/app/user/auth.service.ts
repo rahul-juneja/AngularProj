@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 
@@ -6,7 +6,7 @@ import { map } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  url = "http://localhost:3000/signup"
+  url = "http://localhost:5000/signup"
 
   constructor(private http: HttpClient) { }
 

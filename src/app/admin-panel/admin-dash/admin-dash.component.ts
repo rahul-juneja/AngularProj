@@ -18,6 +18,7 @@ export class AdminDashComponent implements OnInit {
   logId!:number
   pass: any;
   confirm!: boolean;
+  link:any = '/user/login'
 
   constructor(private router: Router, private webServ: WebService,
     private formBuilder: FormBuilder
@@ -85,6 +86,7 @@ export class AdminDashComponent implements OnInit {
         this.f['l_name'].setValue(person.lastname)
         this.f['username'].setValue(person.username)
         this.f['email'].setValue(person.email)
+        this.f['pass'].setValue(person.password)
         this.f['phone'].setValue(person.phone)
         this.f['gender'].setValue(person.gender)
         this.f['role'].setValue(person.role)

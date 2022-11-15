@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class WebService {
   
-  url = "http://localhost:3000/signup"
+  url = "http://localhost:5000/signup"
 
   constructor(private http: HttpClient) { }
 
@@ -20,8 +20,7 @@ export class WebService {
   }
   
   deleteService(userId:number){
-    this.url = this.url + "/" + userId
-    return this.http.delete(this.url)
+    return this.http.delete(this.url+ "/" + userId)
     
   }
 }
